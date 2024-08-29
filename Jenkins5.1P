@@ -26,7 +26,7 @@ pipeline{
                     )
                     
                 }
-                fail {
+                unsuccessful {
                     emailext(
                         subject: "Test Unsuccessful",
                         body: "Test failed",
@@ -57,7 +57,7 @@ pipeline{
                     )
                      
                 }
-                fail {
+                unsuccessful {
                     emailext(
                         subject: "Security Scan failed",
                         body: "Security scan failed. Try again",
