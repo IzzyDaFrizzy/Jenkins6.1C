@@ -13,14 +13,14 @@ pipeline{
                 echo "Unit tests complete"
                 sleep 1
                 echo "In Progress: integration tests"
-                echo "testing jenkins build"
+                echo "testing Jenkins build"
                 echo "Integration Tests complete"
             }
              post{
                 success {
                     mail to: "izzyga04@gmail.com",
                     subject: "Test Successful",
-                    body: "Test was successfully completed"
+                    body: "Test was completed"
                 }
             }
         }
@@ -37,8 +37,8 @@ pipeline{
             post{
                 success {
                     mail to: "izzyga04@gmail.com",
-                    subject: "Secruity Scan Successful",
-                    body: "Secuirty scan was successfully completed"
+                    subject: "Security Scan Successful",
+                    body: "Security scan was successfully completed"
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline{
         stage('Integration tests on Staging'){
             steps{
                 echo "Running Integration test.."
-                echo "funcitons running as expection. proceeding"
+                echo "functions running as expected. proceeding"
             }
         }
         stage("Deploy to Production"){
@@ -61,3 +61,4 @@ pipeline{
         }
 
     }
+}
