@@ -13,8 +13,15 @@ pipeline{
                 echo "Unit tests complete"
                 sleep 1
                 echo "In Progress: integration tests"
-                echo "testing Jenkins build"
+                echo "testing jenkins build"
                 echo "Integration Tests complete"
+            }
+             post{
+                success {
+                     mail to: "izzyga04@gmail.com"
+                    subject: "Test Successful"
+                    body: "Test was successfully completed"
+                }
             }
         }
         stage('Code Analysis'){
@@ -27,6 +34,13 @@ pipeline{
                 echo "Start Security Scan...."
                 echo "Using Kaspersky: Starting Scan"
             }
+            post{
+                success {
+                     mail to: "izzyga04@gmail.com"
+                    subject: "Secruity Scan Successful"
+                    body: "Secuirty scan was successfully completed"
+                }
+            }
         }
         stage('Deploy to Staging'){
             steps{
@@ -37,10 +51,10 @@ pipeline{
         stage('Integration tests on Staging'){
             steps{
                 echo "Running Integration test.."
-                echo "functions running as expected. proceeding"
+                echo "funcitons running as expection. proceeding"
             }
         }
-        stage("Deploy to Production"){
+        stage("Deplot to Production"){
             steps{
                 echo "deploy to the production server"
             }
