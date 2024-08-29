@@ -3,32 +3,46 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo "Build started and completed"
+                echo "fetch the source code from the GitHub repository"
+                echo "compile the code and generate any necessary components"
             }
         }
         stage('Test'){
             steps{
-                echo "Test started and completed"
+                echo "In Progress: Unit Tests"
+                echo "Unit tests complete"
+                sleep 1
+                echo "In Progress: integration tests"
+                echo "testing Jenkins build"
+                echo "Integration Tests complete"
             }
         }
-        stage('Code Quality Check'){
+        stage('Code Analysis'){
             steps{
-                echo "Code Quality Check started and completed"
+                echo "Check the quality of the code: Initiate JetBrains Analysis"
             }
         }
-        stage('Deploy'){
+        stage('Security Scan'){
             steps{
-                echo "Deploy started and completed"
+                echo "Start Security Scan...."
+                echo "Using Kaspersky: Starting Scan"
             }
         }
-        stage('Approval'){
+        stage('Deploy to Staging'){
             steps{
-                echo "Approval started and completed"
+                sleep 10
+                echo "Deploy to staging Server"
             }
         }
-        stage('DeploytoProduction'){
+        stage('Integration tests on Staging'){
             steps{
-                echo "Deolyed to production completed"
+                echo "Running Integration test.."
+                echo "functions running as expected. proceeding"
+            }
+        }
+        stage("Deploy to Production"){
+            steps{
+                echo "deploy to the production server"
             }
         }
 
