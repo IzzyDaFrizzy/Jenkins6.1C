@@ -18,10 +18,22 @@ pipeline{
             }
              post{
                 success {
-                    subject: "Test Successful",
-                    body: "Test was completed"
-                    mail to: "izzyga04@gmail.com",
-                    attachLog: true 
+                    emailext(
+                        subject: "Test Successful",
+                        body: "Test was completed",
+                        to: "izzyga04@gmail.com",
+                        attachLog: true 
+                    )
+                    
+                }
+                fail {
+                    emailext(
+                        subject: "Test Unsuccessful",
+                        body: "Test failed",
+                        to: "izzyga04@gmail.com",
+                        attachLog: true 
+                    )
+                    
                 }
             }
         }
@@ -37,10 +49,22 @@ pipeline{
             }
             post{
                 success {
-                    subject: "Security Scan Successful",
-                    body: "Security scan was successfully completed"
-                    mail to: "izzyga04@gmail.com",
-                    attachLog: true 
+                    emailext(
+                        subject: "Security Scan Successful",
+                        body: "Security scan was successfully completed",
+                        to: "izzyga04@gmail.com",
+                        attachLog: true
+                    )
+                     
+                }
+                fail {
+                    emailext(
+                        subject: "Security Scan failed",
+                        body: "Security scan failed. Try again",
+                        to: "izzyga04@gmail.com",
+                        attachLog: true
+                    )
+                     
                 }
             }
         }
