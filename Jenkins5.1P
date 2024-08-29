@@ -18,8 +18,8 @@ pipeline{
             }
              post{
                 success {
-                     mail to: "izzyga04@gmail.com"
-                    subject: "Test Successful"
+                    mail to: "izzyga04@gmail.com",
+                    subject: "Test Successful",
                     body: "Test was successfully completed"
                 }
             }
@@ -36,8 +36,8 @@ pipeline{
             }
             post{
                 success {
-                     mail to: "izzyga04@gmail.com"
-                    subject: "Secruity Scan Successful"
+                    mail to: "izzyga04@gmail.com",
+                    subject: "Secruity Scan Successful",
                     body: "Secuirty scan was successfully completed"
                 }
             }
@@ -54,12 +54,10 @@ pipeline{
                 echo "funcitons running as expection. proceeding"
             }
         }
-        stage("Deplot to Production"){
+        stage("Deploy to Production"){
             steps{
                 echo "deploy to the production server"
             }
         }
 
     }
-    
-}
