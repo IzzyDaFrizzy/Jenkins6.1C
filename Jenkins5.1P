@@ -22,7 +22,6 @@ pipeline{
                         subject: "Test Successful",
                         body: "Test was completed",
                         to: "izzyga04@gmail.com",
-                        attachLog: true 
                     )
                     
                 }
@@ -30,8 +29,7 @@ pipeline{
                     emailext(
                         subject: "Test Unsuccessful",
                         body: "Test failed",
-                        to: "izzyga04@gmail.com",
-                        attachLog: true 
+                        to: "izzyga04@gmail.com"
                     )
                     
                 }
