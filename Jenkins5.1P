@@ -18,12 +18,15 @@ pipeline{
             }
             post{
                 success {
-                    emailext(
-                        subject: "Test Successful",
-                        body: "Test was completed",
-                        to: "s223392637@deakin.edu.au",
-                        attachLog: true 
-                    )
+                    mail to:"izzyga04@gmail.com"
+                    subject: "Test Good"
+                    body:"yippe tests"
+                    //emailext(
+                       // subject: "Test Successful",
+                       // body: "Test was completed",
+                       // to: "s223392637@deakin.edu.au",
+                        //attachLog: true 
+                   // )
         
                 }
                 unsuccessful {
@@ -62,7 +65,7 @@ pipeline{
                         subject: "Security Scan failed",
                         body: "Security scan failed. Try again",
                         to: "izzyga04@gmail.com",
-                        attachLog: true
+                        //attachLog: true
                     )
                      
                 }
