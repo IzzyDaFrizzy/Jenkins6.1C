@@ -1,93 +1,85 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
-                echo "fetch the source code from the GitHub repository"
-                echo "compile the code and generate any necessary components"
+    stages {
+        stage('Build') {
+            steps {
+                echo "Fetch the source code from the GitHub repository"
+                echo "Compile the code and generate any necessary components"
             }
         }
-        stage('Test'){
-            steps{
+        stage('Test') {
+            steps {
                 echo "In Progress: Unit Tests"
                 echo "Unit tests complete"
                 sleep 1
-                echo "In Progress: integration tests"
-                echo "testing Jenkins build"
+                echo "In Progress: Integration tests"
+                echo "Testing Jenkins build"
                 echo "Integration Tests complete"
             }
-            post{
+            post {
                 success {
-                    mail to:"izzyga04@gmail.com"
-                    subject: "Test Good"
-                    body:"yippe tests"
-                    //emailext(
-                       // subject: "Test Successful",
-                       // body: "Test was completed",
-                       // to: "s223392637@deakin.edu.au",
-                        //attachLog: true 
-                   // )
-        
+                    emailext(
+                        subject: "Test Successful",
+                        body: "Unit and Integration tests completed successfully.",
+                        to: "izzyga04@gmail.com",
+                        attachLog: true
+                    )
                 }
-                unsuccessful {
+                failure {
                     emailext(
                         subject: "Test Unsuccessful",
-                        body: "Test failed",
+                        body: "Unit and Integration tests failed.",
                         to: "izzyga04@gmail.com",
-                        //attachLog: true 
+                        attachLog: true
                     )
-                    
                 }
             }
         }
-        stage('Code Analysis'){
-            steps{
+        stage('Code Analysis') {
+            steps {
                 echo "Check the quality of the code: Initiate JetBrains Analysis"
             }
         }
-        stage('Security Scan'){
-            steps{
-                echo "Start Security Scan...."
+        stage('Security Scan') {
+            steps {
+                echo "Start Security Scan..."
                 echo "Using Kaspersky: Starting Scan"
             }
-            post{
+            post {
                 success {
                     emailext(
                         subject: "Security Scan Successful",
-                        body: "Security scan was successfully completed",
+                        body: "Security scan was successfully completed.",
                         to: "izzyga04@gmail.com",
-                        //attachLog: true
+                        attachLog: true
                     )
-                     
                 }
-                unsuccessful {
+                failure {
                     emailext(
-                        subject: "Security Scan failed",
-                        body: "Security scan failed. Try again",
+                        subject: "Security Scan Failed",
+                        body: "Security scan failed. Please try again.",
                         to: "izzyga04@gmail.com",
-                        //attachLog: true
+                        attachLog: true
                     )
-                     
                 }
             }
         }
-        stage('Deploy to Staging'){
-            steps{
+        stage('Deploy to Staging') {
+            steps {
                 sleep 10
-                echo "Deploy to staging Server"
+                echo "Deploy to staging server"
             }
         }
-        stage('Integration tests on Staging'){
-            steps{
-                echo "Running Integration test.."
-                echo "functions running as expected. proceeding"
+        stage('Integration Tests on Staging') {
+            steps {
+                echo "Running Integration tests..."
+                echo "Functions running as expected. Proceeding."
             }
         }
-        stage("Deploy to Production"){
-            steps{
-                echo "deploy to the production server"
+        stage('Deploy to Production') {
+            steps {
+                echo "Deploy to the production server"
             }
         }
-
     }
 }
