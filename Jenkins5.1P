@@ -21,7 +21,7 @@ pipeline{
                     emailext(
                         subject: "Test Successful",
                         body: "Test was completed",
-                        to: "izzyga04@gmail.com",
+                        to: "s223392637@deakin.edu.au",
                         attachLog: true 
                     )
         
