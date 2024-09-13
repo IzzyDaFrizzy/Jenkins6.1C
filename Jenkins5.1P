@@ -49,6 +49,7 @@ pipeline{
             }
             post{
                 success {
+                    
                     email-ext(
                         subject: "Security Scan Successful",
                         body: "Security scan was successfully completed",
@@ -58,6 +59,7 @@ pipeline{
                      
                 }
                 unsuccessful {
+                    
                     email-ext(
                         subject: "Security Scan failed",
                         body: "Security scan failed. Try again",
